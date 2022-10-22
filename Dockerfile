@@ -6,12 +6,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update \
 
 COPY . /app/
 WORKDIR /app
-RUN apt update
+RUN apt -qq update
 RUN apt install -qqy apt-file
 RUN apt-file update
 RUN apt install -qqy software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt update
+RUN apt -qq update
 RUN apt install -qqy python3.7 python3-pip 
 RUN pip3 install --upgrade pip
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
