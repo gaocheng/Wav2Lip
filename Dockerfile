@@ -12,7 +12,10 @@ RUN apt-file update
 RUN apt install -qqy software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt -qq update
-RUN apt install -qqy python3.7 python3-pip 
+RUN apt install -qqy python3.7 python3-pip
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+RUN update-alternatives --config python3
 RUN pip3 install --upgrade pip
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 RUN pip3 config set install.trusted-host mirrors.aliyun.com
